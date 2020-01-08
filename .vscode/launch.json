@@ -1,25 +1,45 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch with node",
-            "program": "${workspaceFolder}/app.js",
-            "runtimeArgs": ["--inspect-brk"],
-            "port": 9229,
-            "skipFiles": [
-                "<node_internals>/**"
-            ]
-        },
-        {
-            "name": "Launch via npm",
-            "type": "node",
-            "request": "launch",
-            "cwd": "${workspaceFolder}",
-            "runtimeExecutable": "npm",
-            "runtimeArgs": ["run-script", "debug"],
-            "port": 9229
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch with node",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/app.js",
+      "runtimeArgs": ["--inspect-brk"],
+      "port": 9229,
+      "skipFiles": ["<node_internals>/**"],
+      "disableOptimisticBPs": true
+    },
+    {
+      "name": "Launch via npm",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run-script", "debug"],
+      "port": 9229,
+      "disableOptimisticBPs": true
+    },
+    {
+      "name": "Jest integration test debug",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run-script", "int-test"],
+      "port": 9229,
+      "disableOptimisticBPs": true
+    },
+    {
+      "name": "Jest unit test debug",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run-script", "unit-test"],
+      "port": 9229,
+      "disableOptimisticBPs": true
+    }
+  ]
 }

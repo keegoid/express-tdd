@@ -4,11 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "jest",
-    "test-watch": "jest --watchAll",
+    "test": "mocha test/unit/todo.controller.test.js",
+    "test-watch": "mocha --watch test/unit/ --recursive",
     "debug": "node --inspect-brk app.js",
-    "int-test": "node --inspect node_modules/.bin/jest -i test/integration/todo.controller.int.test.js",
-    "unit-test": "node --inspect node_modules/.bin/jest -i test/unit/todo.controller.test.js"
+    "int-test": "node --inspect node_modules/.bin/mocha test/integration/todo.controller.int.test.js",
+    "unit-test": "node --inspect node_modules/.bin/mocha test/unit/todo.controller.test.js"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +22,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^7.0.0",
+    "sinon": "^8.0.4",
     "supertest": "^4.0.2"
   }
 }

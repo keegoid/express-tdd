@@ -1,5 +1,6 @@
 const TodoModel = require("../model/todo.model");
 
+// POST
 exports.createTodo = async (req, res, next) => {
   try {
     const createdModel = await TodoModel.create(req.body);
@@ -9,6 +10,7 @@ exports.createTodo = async (req, res, next) => {
   }
 };
 
+// GET
 exports.getTodos = async (req, res, next) => {
   try {
     const allTodos = await TodoModel.find({});
@@ -18,12 +20,45 @@ exports.getTodos = async (req, res, next) => {
   }
 };
 
+// GET
 exports.getTodoById = async (req, res, next) => {
   try {
     const todoModel = await TodoModel.findById(req.params.todoId);
     if (todoModel) {
       res.status(200).json(todoModel);
     } else {
+      res.status(404).send();
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+// PUT
+exports.updateTodo = async (req, res, next) => {
+  try {
+    const updatedTodo = await TodoModel.findByIdAndUpdate(req.params.todoId, req.body, {
+      new: true,
+      useFindAndModify: false
+    });
+    if (updatedTodo) {
+      res.status(200).json(updatedTodo);
+    } else {
+      res.status(404).send();
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+// DELETE
+exports.deleteTodo = async (req, res, next) => {
+  try {
+    const deletedTodo = await TodoModel.findByIdAndDelete(req.params.todoId);
+    if(deletedTodo){
+    res.status(200).json(deletedTodo);
+    }
+    else {
       res.status(404).send();
     }
   } catch (err) {

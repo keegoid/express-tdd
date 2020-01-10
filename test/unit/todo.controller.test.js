@@ -19,7 +19,7 @@ const allTodos = require("../mock-data/all-todos.json")
 sinon.stub(TodoModel) // wraps the spy
 
 // define API variables
-let dt, req, res, next
+let req, res, next
 const todoId = "5e1552216b99753c74631c67"
 
 // make sure variables are initialized before each test
